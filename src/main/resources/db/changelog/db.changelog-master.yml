@@ -1,0 +1,8 @@
+databaseChangeLog:
+ - include:
+    author: Aleksandr Shevchik
+    file: db/changelog/changeset/create-main-table.yml	
+ - include:
+    author: Aleksandr Shevchik
+    file: db/changelog/changeset/create-column-deadline-task.yml
+    

@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - changeSet:
+     id: createChema
+     author: Aleksandr Shevchik
+     dbms: CREATE SCHEMA db_crm_tasks

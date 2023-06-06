@@ -1,0 +1,14 @@
+
+{
+   "databaseChangeLog": [
+       {
+           "include": {"file": "db/changelog/changeset/create-main-table.json"}
+       },
+       {
+           "include": {"file": "db/changelog/changeset/create-column-deadline-task.json"}
+           
+       }
+   ]
+}
+
+    

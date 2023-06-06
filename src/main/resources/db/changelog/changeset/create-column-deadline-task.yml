@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id: deadline-column
+    author: Aleksandr Shevchik
+    changes: 
+    - addColumn:
+        tableName: tasks
+        columns:
+          - column:
+             name: deadline
+             type: date
+          - column:
+              name: status
+              type: varchar(50) 
+             
