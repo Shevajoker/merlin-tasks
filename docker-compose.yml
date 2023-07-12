@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:14.1-alpine
+    container_name: db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: db_crm_tasks
+    ports:
+      - '5432:5432'
+  taskseureka:
+    image: shevajoker/task-service:latest
+    container_name: taskseureka
+    ports:
+      - 64589:8080
+    environment:
+      - EUREKA_HOST=http://eserver:8761/eureka/
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db_crm_tasks
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - db  

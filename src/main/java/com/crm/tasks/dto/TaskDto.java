@@ -18,8 +18,8 @@ public class TaskDto {
 	private Date endDate;
 	private String titleTask;
 	private String textTask;
-	private long idEmployeeDoTask;
-	private long idEmployeeCreateTask;
+	private String idEmployeeDoTask;
+	private String idEmployeeCreateTask;
 	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date deadline;
 	private String taskStatus;

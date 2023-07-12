@@ -3,12 +3,14 @@ package com.crm.tasks.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,7 +59,7 @@ public class MainController {
 	
 	@GetMapping("/allTasks/{id}")
 	@CircuitBreaker(name = "breaker", fallbackMethod = "defoultTask")
-	public List<TaskDto> allTasks(@PathVariable Long id) throws TimeoutException{
+	public List<TaskDto> allTasks(@PathVariable String id) throws TimeoutException{
 		log.info(id);
 
 		List<TaskEntity> taskEntities = taskService.findByIdEmployeeDoTask(id);
@@ -71,12 +73,24 @@ public class MainController {
 		return taskDtos;
 	}
 	
-	public List<TaskDto> defoultTask(@PathVariable Long id, Throwable t){
+	public List<TaskDto> defoultTask(@PathVariable String id, Throwable t){
 		List<TaskDto> resList = new ArrayList<>();
 		resList.add(new TaskDto());
 		return resList;
 	}
 	
 
+	
+	@PutMapping("/start/{id}")
+	public void updateTask(@PathVariable long id) {
+		TaskEntity taskEntity = taskService.findById(id);
+		log.info("taskEntity  ---  " + taskEntity.toString());
+		taskEntity.setTaskStatus(TaskStatus.STARTED);
+		taskEntity.setStartDate(new Date());
+		log.info("taskEntity  ---  " + taskEntity.toString());
+		taskService.save(taskEntity);
+		
+		log.info("@PutMapping(\"/start/{id}\")   ---  " + id);
+	}
 	
 }

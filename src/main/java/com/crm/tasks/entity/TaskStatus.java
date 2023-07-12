@@ -4,7 +4,5 @@ public enum TaskStatus {
 
 	NEW, STARTED, FINISHED, DELEYED;
 	
-	private TaskStatus() {
-	
-	}
+	private TaskStatus() {}
 }

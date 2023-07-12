@@ -30,7 +30,7 @@ databaseChangeLog:
               type: text
           - column:
               name: id_employee_do_task
-              type: bigint
+              type: varchar(225)
           - column:
               name: id_employee_create_task
-              type: bigint     
+              type: varchar(225)     

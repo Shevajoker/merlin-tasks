@@ -38,10 +38,10 @@ public class TaskEntity {
 	private String textTask;
 	
 	@Column(name = "id_employee_do_task")
-	private long idEmployeeDoTask;
+	private String idEmployeeDoTask;
 	
 	@Column(name = "id_employee_create_task")
-	private long idEmployeeCreateTask;
+	private String idEmployeeCreateTask;
 	
 	@Column(name = "deadline")
 	private Date deadline;
